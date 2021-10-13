@@ -16,7 +16,7 @@ import com.jw.utility.PasswordUtils;
 
 public class MenuController {
 
-	private static Scanner scanner = new Scanner(System.in);
+	static Scanner scanner = new Scanner(System.in);
 	private UserService userService = new UserService();
 	public static Logger log = LoggerFactory.getLogger(UsersDAOImplement.class);
 
@@ -33,6 +33,7 @@ public class MenuController {
 	}
 
 	private void showMainMenu() {
+		System.out.println("Purchase Order System");
 		System.out.println("1. Sign-in");
 		System.out.println("2. Sign-up");
 		System.out.println("3. About");
@@ -115,7 +116,8 @@ public class MenuController {
 
 				if (isCorrectPassword) {
 					String accountType = rs.getString("account_type");
-					LandingPageController landingPage = new LandingPageController(accountType);
+					int user_id = rs.getInt("user_id");
+					LandingPageController landingPage = new LandingPageController(accountType, user_id);
 				} else {
 					System.out.println("Password is incorrect.");
 					showSignInPage();
@@ -179,9 +181,18 @@ public class MenuController {
 					Optional<String> hashedPassword = PasswordUtils.hashThePlainTextPassword(password, salt);
 					String hashedPasswordStr = hashedPassword.get();
 					boolean isSuccessful = userService.insertAnUser(input, salt, hashedPasswordStr, email);
+					ResultSet rs = userService.findInfoWithUserName(input);
+					try {
+						if (isSuccessful && rs.next()) {
+							int user_id;
 
-					if (isSuccessful) {
-						LandingPageController landingPageController = new LandingPageController();
+							user_id = rs.getInt("user_id");
+							LandingPageController landingPageController = new LandingPageController("Customer",
+									user_id);
+						}
+					} catch (SQLException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
 					}
 				}
 			}

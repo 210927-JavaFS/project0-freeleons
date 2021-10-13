@@ -25,5 +25,10 @@ public class UserService {
 	{
 		return userDAO.findInfoWithUserName(userName);
 	}
+	
+	public void printUserTable()
+	{
+		userDAO.printUserTable();
+	}
 
 }

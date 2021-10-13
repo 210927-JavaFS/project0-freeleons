@@ -1,5 +1,6 @@
 package com.jw.dao;
 
+import java.sql.Statement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -7,6 +8,8 @@ import java.sql.SQLException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import com.jw.jdbc.ConnectionUtil;
+
+import net.efabrika.util.DBTablePrinter;
 
 public class UsersDAOImplement implements UsersDAO {
 
@@ -86,6 +89,22 @@ public class UsersDAOImplement implements UsersDAO {
 			e.printStackTrace();
 		}	
 		return false;
+	}
+	
+	
+	public void printUserTable() {
+		// TODO Auto-generated method stub
+		try (Connection conn = ConnectionUtil.getConnection()) { // try-with-resources
+			String sql = "SELECT user_id, user_name, account_type, first_name, last_name FROM Users";
+			Statement statement = conn.createStatement();
+			ResultSet rs = statement.executeQuery(sql);
+			DBTablePrinter.printResultSet(rs, 10);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
 	}
 
 }
