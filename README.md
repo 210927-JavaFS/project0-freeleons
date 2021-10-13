@@ -1,3 +1,9 @@
+** References: **
+
+** PasswordUtils referenced online password encryption scheme. https://betterprogramming.pub/how-to-correctly-store-passwords-in-a-database-5d261f49f605 **
+
+** Datebase Table pretty printing is from the opensource: https://github.com/htorun/dbtableprinter **
+
 # Project 0
 
 **Description**
