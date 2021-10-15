@@ -1,10 +1,10 @@
+# Project 0
+
 ** References: **
 
 ** PasswordUtils referenced online password encryption scheme. https://betterprogramming.pub/how-to-correctly-store-passwords-in-a-database-5d261f49f605 **
 
 ** Datebase Table pretty printing is from the opensource: https://github.com/htorun/dbtableprinter **
-
-# Project 0
 
 **Description**
 Leveraging Java 8, create a CLI application with a multi-tier user system. You may choose the actual use case for your application as long as it meets all the requirements defined below. 
