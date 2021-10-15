@@ -1,6 +1,6 @@
 # Project 0
 
-** References: **
+**References:**
 
 ** PasswordUtils referenced online password encryption scheme. https://betterprogramming.pub/how-to-correctly-store-passwords-in-a-database-5d261f49f605 **
 
